@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
   <!-- endinject -->
-  <!-- plugin css for this page -->
-  <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
   <!-- endinject -->
@@ -21,9 +19,6 @@
 <body>
   <div class="container-scroller">
     <!-- partial:../../partials/_navbar.html -->
-    
-    
-    
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="navbar-brand-wrapper d-flex justify-content-center">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">  
@@ -163,9 +158,6 @@
         </button>
       </div>
     </nav>
-    
-    
-    
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:../../partials/_sidebar.html -->
@@ -239,65 +231,49 @@
         </ul>
       </nav>
       <!-- partial -->
-      <div class="main-panel">        
+      <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-         
-            <div class="col-12 grid-margin stretch-card">
+            @if (session('status'))
+                <div class="alert alert-primary">
+                  {{session('status')}}
+                </div>
+            @endif
+            <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Basic form elements</h4>
-                  <p class="card-description">
-                    Basic form elements
-                  </p>
-                  <form class="forms-sample">
-                    <div class="form-group">
-                      <label for="exampleInputName1">Name</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Name">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputEmail3">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword4">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleSelectGender">Gender</label>
-                        <select class="form-control" id="exampleSelectGender">
-                          <option>Male</option>
-                          <option>Female</option>
-                        </select>
-                      </div>
-                    <div class="form-group">
-                      <label>File upload</label>
-                      <input type="file" name="img[]" class="file-upload-default">
-                      <div class="input-group col-xs-12">
-                        <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                        <span class="input-group-append">
-                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputCity1">City</label>
-                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleTextarea1">Textarea</label>
-                      <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </form>
+                  <div class="d-flex justify-content-between">
+                    <h4 class="card-title">Kategori</h4>
+                    <a href="{{url('kategori/tambah')}}" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-account-plus"></i></a>
+                  </div>
+                  
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th>No</th>
+                          <th>Nama Kategori</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach ($kt as $item)
+                            <tr>
+                              <td>{{$item->KategoriID}}</td>
+                              <td>{{$item->NamaKategori}}</td>
+                              <td>
+                                <a href="{{url('kategori/edit/'.$item->KategoriID)}}" ><i class="mdi mdi-border-color"></i></a>
+                              </td>
+                            </tr>
+                        @endforeach
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
-                
-                
-          </div>
-        </div>
+            
+            
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
@@ -316,13 +292,14 @@
   <!-- plugins:js -->
   <script src="../../vendors/base/vendor.bundle.base.js"></script>
   <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="../../js/off-canvas.js"></script>
   <script src="../../js/hoverable-collapse.js"></script>
   <script src="../../js/template.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="../../js/file-upload.js"></script>
   <!-- End custom js for this page-->
 </body>
 
