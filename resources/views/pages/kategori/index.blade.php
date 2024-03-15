@@ -9,9 +9,13 @@
   <!-- plugins:css -->
   <link rel="stylesheet" href="../../vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../vendors/base/vendor.bundle.base.css">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- endinject -->
   <!-- inject:css -->
   <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../boxicons/boxicons.css">
   <!-- endinject -->
   <link rel="shortcut icon" href="../../images/favicon.png" />
 </head>
@@ -239,15 +243,13 @@
                   {{session('status')}}
                 </div>
             @endif
-            <div class="col-lg-12 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
+            
                   <div class="d-flex justify-content-between">
                     <h4 class="card-title">Kategori</h4>
                     <a href="{{url('kategori/tambah')}}" class="btn btn-inverse-primary btn-fw"><i class="mdi mdi-account-plus"></i></a>
                   </div>
                   
-                  <div class="table-responsive">
+                  
                     <table class="table table-hover">
                       <thead>
                         <tr>
@@ -262,16 +264,28 @@
                               <td>{{$item->KategoriID}}</td>
                               <td>{{$item->NamaKategori}}</td>
                               <td>
-                                <a href="{{url('kategori/edit/'.$item->KategoriID)}}" ><i class="mdi mdi-border-color"></i></a>
+                                <div class="dropdown">
+                                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                  </button>
+                                  <div class="dropdown-menu">
+                                    
+                                    <a class="dropdown-item" href="{{url('edit/'.$item->id_petugas)}}"
+                                      ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                                    >
+                                    <a class="dropdown-item" href="hapus/{{$item->id_petugas}}" onclick="return confirm('Apakah anda yakin ingin menghapus petugas ini?');"
+                                      ><i class="bx bx-trash me-1"></i> Delete</a
+                                    >
+                                  </div>
+                                </div>
+                                    
                               </td>
                             </tr>
                         @endforeach
                       </tbody>
                     </table>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  
+                
             
             
         <!-- content-wrapper ends -->

@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('Koleksi_Pribadi',function(Blueprint $table){
-            $table->integer('KoleksiID')->autoIncrement;
+            $table->integer('KoleksiID')->autoIncrement();
             $table->integer('UserID');
             $table->integer('BukuID');
             $table->timestamps();
-            $table->primary('KoleksiID');
+            
        });
     }
 

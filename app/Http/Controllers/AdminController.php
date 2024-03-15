@@ -12,10 +12,11 @@ class AdminController extends Controller
 {
 
     public function index(){
-        $buku = Buku::count();
-        $kategori = KategoriBuku::count();
-        $user = Userr::count();
-        return view('index',['buku_hitung' => $buku, 'kategori_hitung' => $kategori, 'user_hitung' => $user]);
+        // $buku = Buku::count();
+        // $kategori = KategoriBuku::count();
+        // $user = Userr::count();
+        return view('index');
+        // ,['buku_hitung' => $buku, 'kategori_hitung' => $kategori, 'user_hitung' => $user]
     }
 
     public function register(){
